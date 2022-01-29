@@ -1,0 +1,9 @@
+ServerName = input ("Enter your website name: ( Example website.com Do not put www): " )
+ServerAdmin = input ("Enter your Admin Email Address: " )
+ServerAlias = input ("Enter your alias name: ( Example www.website.com): " )
+
+Serverinfo = ['<VirtualHost *:80>', 'ServerAdmin' + " " + ServerAdmin , 'ServerName' + " " + ServerName,'ServerAlias'+ " " + ServerAlias, 'DocumentRoot', "<Directory /var/www/Web_hosting/"+ ServerName +"/>", 'AllowOverride all', 'Options +FollowSymLinks', 'Require all granted', '</Directory>', '</VirtualHost>']
+with open(ServerName +'.conf', 'w') as f:
+    for line in Serverinfo:
+        f.write(line)
+        f.write('\n')
